@@ -1,5 +1,7 @@
 package fr.iutvalence.java.tp.puissance4;
 
+import javax.swing.SwingUtilities;
+
 /**
  * Permet de lancer une partie de Puissance4
  * 
@@ -16,6 +18,9 @@ public class LanceurPuissance4
 	 */
 	public static void main(String[] args)
 	{
+		// Exécution de la tâche de gestion de l'IHM dans le thread "event dispatch" de Swing
+		SwingUtilities.invokeLater(new TacheDAffichageDeComposantsSimples());
+		
 		Joueur[] joueurs = new Joueur[] {new JoueurAleatoire(Couleur.ROUGE), new JoueurAleatoire(Couleur.JAUNE)};
 		Puissance4 puissance4 = new Puissance4(joueurs, new AffichageConsole());
 		puissance4.jouer();
